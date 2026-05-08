@@ -1,0 +1,17 @@
+# Environments
+WebDevPythonEnv/
+.env
+
+# Django specific
+db.sqlite3
+__pycache__/
+*.py[cod]
+local_settings.py
+
+# Documentation & Misc
+ImpDocs/
+.DS_Store
+
+# Static/Media roots 
+/static_root/
+/media/
