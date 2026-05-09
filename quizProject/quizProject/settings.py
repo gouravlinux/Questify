@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-k9u#3upy1rl&^rnxw_bx3#3_pdwy^%6*zm_^tpps(gelf%lkx0"
+SECRET_KEY = "django-insecure--!t(1ku!7blege*9l1s0(mkvr0q(bdb#9^kbljjogx6+r$=2ri"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "quizApp",
 ]
 
 MIDDLEWARE = [
@@ -114,4 +115,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+# this tells django where to look for static files in the app
 STATIC_URL = "static/"
+

@@ -1,0 +1,21 @@
+{% extends 'quizApp/base.html' %}
+{% block content %}
+<div class="login-container">
+    <div class="card neon-card login-card" style="width: 500px;">
+        <h2 class="logo-title">Questify</h2>
+        <h3>Set Up Your Quiz</h3>
+
+        <form method="post">
+            {% csrf_token %}
+            <p style="text-align: left; margin-bottom: 5px;">Quiz Title</p>
+            <input type="text" name="quiz_title" placeholder="eg. Python Basics" required>
+
+            <div class="login-actions" style="margin-top: 20px;">
+                <button class="start-btn" type="submit">
+                    Create & Add Questions
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
