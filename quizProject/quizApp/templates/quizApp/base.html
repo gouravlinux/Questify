@@ -14,6 +14,24 @@
     <nav class="navbar">
       <h1 class="logo">Questify</h1>
     </nav>
-    <main>{% block content %} {% endblock %}</main>
+    <main>
+      {% if messages %}
+      <div style="padding: 10px; text-align: center">
+        {% for message in messages %}
+        <div
+          class="neon-card"
+          style="
+            display: inline-block;
+            padding: 10px 20px;
+            border-color: #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+          "
+        >
+          <span style="color: #00ff00">{{ message }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %} {% block content %} {% endblock %}
+    </main>
   </body>
 </html>
