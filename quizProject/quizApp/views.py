@@ -13,8 +13,9 @@ from django.contrib import messages
 def create_quiz_view(request):
     if request.method == "POST":
         title = request.POST.get("quiz_title")
+        duration = request.POST.get('time_limit')
         # quiz code was auto-generated in our Model's save() method
-        new_quiz = Quiz.objects.create(title=title, creator=request.user)
+        new_quiz = Quiz.objects.create(title=title, creator=request.user,time_limit = duration)
         # instead of going back to dashboard, go to 'add-questions'
         # we pass the ID so Django knows which quiz to add qns. to
         return redirect("add_questions", quiz_id=new_quiz.id)

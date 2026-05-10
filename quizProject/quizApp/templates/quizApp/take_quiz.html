@@ -2,7 +2,27 @@
 <div class="quiz-container">
   <div class="quiz-header">
     <h2 class="logo-title">{{ quiz.title }}</h2>
-    <div class="timer">Time Remaining: <span id="clock">10:00</span></div>
+    <div class="timer">Time Remaining: <span id="clock">--:--</span></div>
+    <script>
+      // Django will replace {{ quiz.time_limit }} with the actual number from SQLite
+      let minutes = {{ quiz.time_limit }};
+      let time = minutes * 60;
+      const timerHtml = document.getElementById('clock');
+
+      const countdown = setInterval(() => {
+          let currentMins = Math.floor(time / 60);
+          let currentSecs = time % 60;
+
+          timerHtml.innerHTML = `${currentMins}:${currentSecs < 10 ? '0' : ''}${currentSecs}`;
+
+          if (time <= 0) {
+              clearInterval(countdown);
+              alert("Time is up! Submitting your answers.");
+              document.querySelector('form').submit(); // Force submission
+          }
+          time--;
+      }, 1000);
+    </script>
   </div>
 
   <form method="POST" action="{% url 'submit_quiz' quiz.id %}">

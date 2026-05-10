@@ -9,6 +9,7 @@ class Quiz(models.Model):
     quiz_code = models.CharField(max_length=6,unique=True,editable=False)
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    time_limit = models.PositiveBigIntegerField(default=10, help_text = "Duration in minutes")
 
     def save(self, *args,**kwargs):
         if not self.quiz_code:
