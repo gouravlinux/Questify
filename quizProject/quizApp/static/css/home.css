@@ -1,0 +1,33 @@
+.hero{
+  text-align:center;
+  padding:120px 20px;
+}
+
+.hero h1{
+  font-size:64px;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:22px;
+}
+
+.join-section{
+  display:flex;
+  justify-content:center;
+  margin-top:50px;
+}
+
+.neon-card{
+  width:500px;
+  background:rgba(0,0,0,0.6);
+  border:1px solid #ff00cc;
+  border-radius:15px;
+  padding:40px;
+  text-align:center;
+  box-shadow:0 0 25px #ff00cc;
+}
+
+.join-btn{
+  margin-top:20px;
+}

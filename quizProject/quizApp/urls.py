@@ -1,14 +1,13 @@
-from django.urls import path 
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('hello/',views.home_redirect_view, name = 'home'),
-    path('register/',views.register_view,name='register'),
-    path('login/',views.login_view, name = 'login'),
-    path('instructor/',views.instructor_dashboard, name = "instructor_dashboard"),
-    path('student/',views.student_dashboard, name = "student_dashboard"),
-    path('create-quiz/',views.create_quiz_view, name='create_quiz'),
-    path('add-questions/<int:quiz_id>/',views.add_questions_view,name="add_questions"),
-    path('take-quiz/<int:quiz_id>/',views.take_quiz_view, name = 'take_quiz'),
-    path('submit-quiz/<int:quiz_id>/',views.submit_quiz_view, name="submit_quiz"),
+    path("", views.home, name="home"),
+    path("login/", views.login_view, name="login"),
+    path("register/", views.register, name="register"),
+    path("student-dashboard/", views.studentdashboard, name="studentdashboard"),
+    path("leaderboard/", views.leaderboard, name="leaderboard"),
+    path("quiz-page/<int:quiz_id>", views.quizpage, name="quizpage"),
+    path("result/", views.result_view, name="result"),
+    path("my-results/", views.my_results, name="myresults"),
 ]

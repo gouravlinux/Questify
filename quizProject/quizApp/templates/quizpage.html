@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Questify - Quiz Page
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+  rel="stylesheet"
+  href="{% static 'css/quiz.css' %}"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="quiz-container">
+
+  <div class="quiz-header">
+
+    <h2>QUIZ</h2>
+
+    <div
+      class="timer"
+      id="timer"
+      data-time="{{ quiz.time_limit }}"
+    >
+
+      {{ quiz.time_limit }}:00
+
+    </div>
+
+  </div>
+
+  <form
+    method="POST"
+    action="{% url 'result' %}"
+    id="quizForm"
+  >
+
+    {% csrf_token %}
+
+    <input
+      type="hidden"
+      name="quiz_id"
+      value="{{ quiz.id }}"
+    >
+
+    <div class="quiz-body">
+
+      <!-- SIDEBAR -->
+
+      <div class="quiz-sidebar">
+
+        <h3>Quiz Progress</h3>
+
+        <p>
+          Questions:
+          {{ questions|length }}
+        </p>
+
+        {% for q in questions %}
+
+        <div class="qbox">
+
+          {{ forloop.counter }}
+
+        </div>
+
+        {% endfor %}
+
+      </div>
+
+      <!-- MAIN QUESTIONS -->
+
+      <div class="quiz-main">
+
+        {% for q in questions %}
+
+        <div class="question-block">
+
+          <h2 class="question">
+
+            {{ q.question }}
+
+          </h2>
+
+          <div class="options">
+
+            <label class="option">
+
+              <input
+                type="radio"
+                name="q{{ q.id }}"
+                value="option1"
+              >
+
+              <span>
+                {{ q.option1 }}
+              </span>
+
+            </label>
+
+            <label class="option">
+
+              <input
+                type="radio"
+                name="q{{ q.id }}"
+                value="option2"
+              >
+
+              <span>
+                {{ q.option2 }}
+              </span>
+
+            </label>
+
+            <label class="option">
+
+              <input
+                type="radio"
+                name="q{{ q.id }}"
+                value="option3"
+              >
+
+              <span>
+                {{ q.option3 }}
+              </span>
+
+            </label>
+
+            <label class="option">
+
+              <input
+                type="radio"
+                name="q{{ q.id }}"
+                value="option4"
+              >
+
+              <span>
+                {{ q.option4 }}
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+        {% endfor %}
+
+        <div class="quiz-buttons">
+
+          <button
+            type="submit"
+            class="submit"
+          >
+
+            Submit Quiz
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{% static 'js/security.js' %}"></script>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+<script src="{% static 'js/timer.js' %}"></script>
+
+{% endblock %}

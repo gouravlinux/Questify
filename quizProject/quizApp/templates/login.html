@@ -1,0 +1,57 @@
+<!-- login.html -->
+
+{% extends 'base.html' %} {% load static %} {% block title %} Questify - Login
+{% endblock %} 
+{% block extra_css %}
+
+<link
+  rel="stylesheet"
+  href="{% static 'css/auth.css' %}"
+>
+
+{% endblock %}
+{% block content %}
+
+<div class="login-container">
+  <div class="card neon-card login-card">
+    <h1 class="logo-title">Questify</h1>
+
+    <h2>Login</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <input type="text" name="username" placeholder="Username" required />
+
+      <div class="password-box">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          required
+        />
+
+        <span class="toggle-password" onclick="togglePassword()"> 👁 </span>
+      </div>
+
+      <button type="submit" class="start-btn">Login</button>
+    </form>
+
+    {% if error %}
+
+    <p style="color: red">{{ error }}</p>
+
+    {% endif %}
+
+    <p class="register-text">
+      Don't have an account?
+      <a href="{% url 'register' %}" class="card-link">Register</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %} {% block scripts %}
+<script src="{% static 'js/login.js' %}"></script>
+<script src="{% static 'js/showpassword.js' %}"></script>
+{% endblock %}
