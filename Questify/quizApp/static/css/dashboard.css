@@ -1,0 +1,33 @@
+.dashboard-container{
+  text-align:center;
+  margin-top:100px;
+}
+
+.dashboard{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+  margin-top:50px;
+}
+
+.card-student,
+.card-instructor{
+  width:220px;
+  padding:40px;
+  border:1px solid #ff00cc;
+  border-radius:12px;
+  background:rgba(0,0,0,0.6);
+  transition:0.3s;
+}
+
+.card-student:hover,
+.card-instructor:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px #ff00cc;
+}
+
+.icon{
+  font-size:40px;
+  margin-bottom:20px;
+}

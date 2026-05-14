@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Already Attempted
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+  rel="stylesheet"
+  href="{% static 'css/already_attempted.css' %}"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="attempted-container">
+
+    <div class="attempted-card">
+
+        <h1>
+            Quiz Already Attempted
+        </h1>
+
+        <p>
+
+            You have already submitted
+
+            <span>
+                {{ quiz.title }}
+            </span>
+
+        </p>
+
+        <a
+          href="{% url 'studentdashboard' %}"
+          class="dashboard-btn"
+        >
+            Go to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
