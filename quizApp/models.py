@@ -57,36 +57,22 @@ class Result(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user','quiz')
+        unique_together = ("user", "quiz")
 
     def __str__(self):
         return f"{self.user.username} - {self.quiz.title}"
 
+
 class StudentAnswer(models.Model):
 
-    result = models.ForeignKey(
-        Result,
-        on_delete=models.CASCADE
-    )
+    result = models.ForeignKey(Result, on_delete=models.CASCADE)
 
-    question = models.ForeignKey(
-        Question,
-        on_delete=models.CASCADE
-    )
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
-    selected_answer = models.CharField(
-        max_length=20
-    )
+    selected_answer = models.CharField(max_length=200,null=True,blank=True)
 
-    correct_answer = models.CharField(
-        max_length=20
-    )
-
-
+    correct_answer = models.CharField(max_length=200)
 
     def __str__(self):
 
-        return (
-            f"{self.result.user.username} - "
-            f"{self.question.question}"
-        )
+        return f"{self.result.user.username} - " f"{self.question.question}"
